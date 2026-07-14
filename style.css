@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url("./Media/bg-image.jpg");
+    backdrop-filter: blur(3px);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .35);
+    padding: 20px;
+}
+
+/* Glass Card */
+
+.container {
+    width: 400px;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(0, 0, 0, .4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .4), inset 0 10px 30px rgba(0, 0, 0, .4);
+}
+
+.container h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+/* Input */
+
+.item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.item input {
+    width: 100%;
+    height: 50px;
+    padding: 0 45px 0 18px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    cursor: text;
+    background: rgba(255, 255, 255, .15);
+    border: 1px solid rgba(255, 255, 255, .2);
+    color: #fff;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.item input::placeholder {
+    color: #ddd;
+
+}
+
+.item input:focus {
+    border-color: #00e5ff;
+    box-shadow: 0 0 15px rgba(0, 229, 255, .5);
+}
+
+/* Autofill styling override for glassmorphism */
+.item input:-webkit-autofill,
+.item input:-webkit-autofill:hover,
+.item input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, .15) inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.item input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, .15) inset, 0 0 15px rgba(0, 229, 255, .5) !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Icon */
+
+.item i {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 18px;
+}
+
+/* Remember */
+
+.item-remember {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.item-remember div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.item-remember input {
+    accent-color: #00e5ff;
+}
+
+.item-remember a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.item-remember a:hover {
+    text-decoration: underline;
+}
+
+/* Button */
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #00e5ff, #0066ff);
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #00e5ff;
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* Register */
+
+.register {
+    margin-top: 25px;
+    text-align: center;
+    color: #fff;
+}
+
+.register a {
+    color: #00e5ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+
+@media(max-width:500px) {
+    .container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .item-remember {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+}
+
+/* --- Smooth Transitions & Animations --- */
+
+/* View Transitions API (Chrome/Edge/Opera/Safari 18+) */
+@view-transition {
+    navigation: auto;
+}
+
+.container {
+    view-transition-name: auth-card;
+}
+
+.container h1 {
+    view-transition-name: auth-title;
+}
+
+button {
+    view-transition-name: auth-btn;
+}
+
+.register {
+    view-transition-name: auth-footer;
+}
+
+/* Page load fade/slide animation fallback for Safari/Firefox */
+.container {
+    animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Disable the fade-in-up entrance animation if native view transitions are supported */
+@supports (view-transition-name: none) {
+    .container {
+        animation: none;
+    }
+}
